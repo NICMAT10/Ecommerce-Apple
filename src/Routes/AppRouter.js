@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 
 import ItemListContainer from '../Components/ItemListContainer/ItemListContainer'
 import ItemDetailContainer from '../Components/ItemDetailContainer/ItemDetailContainer'
@@ -17,6 +17,7 @@ import ItemForm from '../Components/ItemForm/ItemForm'
 //Agregado al ultimo
 import About from '../Components/About/About'
 import Contact from '../Components/Contact/Contact'
+import NotFound from './../Components/NotFound/NotFound';
 
 
 const AppRouter = () => {
@@ -43,10 +44,10 @@ const AppRouter = () => {
               <Route path='products/' element={<ItemsManagerContainer />} />
               <Route path='products/create' element={<ItemForm />} />
               <Route path='products/:productId/edit' element={<ItemForm />} />
-              <Route path='users/' element={<h1>Products manager</h1>} />
+              {/*<Route path='users/' element={<AdminOrders/>} />*/}
             </Route> 
 
-            <Route path='*' element={<Navigate to='/'/>} />
+            <Route path='*' element={<NotFound/>} />
         </Routes>
     )
 }

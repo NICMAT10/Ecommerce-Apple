@@ -9,7 +9,7 @@ import {
     Tooltip,
     Icon,
     chakra
-  } from '@chakra-ui/react'
+} from '@chakra-ui/react'
 import { FiShoppingCart } from 'react-icons/fi';
 
 
@@ -41,3 +41,6 @@ const AddToCart = ({ initial = 1, stock = 0, onAdd }) => {
 }
 
 export default AddToCart
+
+
+

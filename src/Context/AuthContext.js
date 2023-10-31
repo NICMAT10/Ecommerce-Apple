@@ -6,7 +6,7 @@ import { useCart } from './CartContext';
 import { auth } from '../Firebase/Firebase';
 import { useUsers } from '../Firebase/Services/Firestore/Users';
 import { useNavigate } from 'react-router-dom';
-
+// Función para formatear los datos del usuario autenticado
 const formatUser = (rawUser) => {
     return {
         uid: rawUser.uid,
@@ -17,13 +17,13 @@ const formatUser = (rawUser) => {
         token: rawUser.accessToken
     };
 }
-
+// Hook personalizado para gestionar la autenticación
 const useProvideAuth = () => {
     const [user, setUser] = useState(null);
     const navigate = useNavigate();
     const { clearCart } = useCart();
     const { createUser, updateUser } = useUsers();
-
+//Manejar Usuario autenticado
     const handleUser = async (rawUser, provider) => {
         if (rawUser) {
             const user = formatUser(rawUser, provider);
@@ -41,7 +41,7 @@ const useProvideAuth = () => {
             return false;
         }
     }
-
+// Iniciar sesión con correo y contraseña
     const signin = (email, password, callback) => {
         return signInWithEmailAndPassword(auth, email, password)
             .then(async (userCredential) => {
@@ -54,7 +54,7 @@ const useProvideAuth = () => {
                 console.log(error);
             });
     }
-
+// Iniciar sesión con Google
     const signinWithGoogle = async (callback) => {
         const provider = new GoogleAuthProvider();
         signInWithPopup(auth, provider)
@@ -68,7 +68,7 @@ const useProvideAuth = () => {
                 console.log(error);
             });
     }
-
+// Actualizar los datos del usuario
     const updateUserData = async (updatedData) => {
         try {
             const updatedUser = await updateUser(user.uid, updatedData);
@@ -86,7 +86,7 @@ const useProvideAuth = () => {
                 navigate('/');
             })
     }
-
+// Suscribirse a los cambios en la autenticación
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, handleUser);
         return () => unsubscribe();

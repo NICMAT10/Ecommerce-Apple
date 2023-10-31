@@ -12,6 +12,7 @@ import {
 } from 'firebase/firestore'
 
 export const useProducts = () => {
+    // Obtener productos de la base de datos
     const getProducts = (categoryId) => {
         return new Promise((resolve, reject) => {
             const collectionRef = categoryId 
@@ -30,7 +31,7 @@ export const useProducts = () => {
                 })
         })
     }
-    
+     // Obtener un producto por su ID
     const getProductById = (productId) => {
         return new Promise((resolve, reject) => {
             const docRef = doc(db, 'products', productId)
@@ -45,7 +46,7 @@ export const useProducts = () => {
                 })
         })
     }
-
+    // Agregar un nuevo producto a la base de datos
     const addProduct = (newProduct) => {
         return new Promise((resolve, reject) => {
             const collectionRef = collection(db, 'products')
@@ -59,7 +60,7 @@ export const useProducts = () => {
                 })
         })
     }
-
+    // Eliminar un producto por su ID
     const deleteProduct = (productId) => {
         return new Promise((resolve, reject) => {
             const docRef = doc(db, 'products', productId)
@@ -73,7 +74,7 @@ export const useProducts = () => {
                 })
         })
     }
-
+    // Editar un producto existente
     const editProduct = (productId, newData) => {
         return new Promise((resolve, reject) => {
             const docRef = doc(db, 'products', productId)

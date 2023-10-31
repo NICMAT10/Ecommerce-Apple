@@ -9,15 +9,15 @@ import {
 } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
 
-
+// Componente para gestionar un elemento de producto (editar y eliminar)
 const ItemManager = ({ id, name, imageUrl, price, handleDeleteProduct }) => {
   const navigate = useNavigate()
-
+  // Redirigir a la página de detalles del producto al hacer clic en el elemento
   const handleEditItem = (e) => {
-      e.stopPropagation()
+      e.stopPropagation() // Evitar que el clic se propague a los elementos contenedores
       navigate(`/backoffice/products/${id}/edit`)
   }
-
+   // Eliminar el producto al hacer clic en el botón "Eliminar"
   const handleRemoveItem = (e) => {
       e.stopPropagation()
       handleDeleteProduct(id, imageUrl)

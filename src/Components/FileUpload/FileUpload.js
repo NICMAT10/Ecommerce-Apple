@@ -8,15 +8,14 @@ import {
   Text,
   Flex
 } from "@chakra-ui/react";
-//   import { motion, useAnimation } from "framer-motion";
+
 
 
 export default function FileUpload({ handleChange }) {
-  // const controls = useAnimation();
-  // const startAnimation = () => controls.start("hover");
-  // const stopAnimation = () => controls.stop();
+  
   return (
     <Container>
+      {/* Contenedor con relación de aspecto 10.1 (puedes ajustar según las necesidades) */}
       <AspectRatio width="128" ratio={10.1}>
         <Box
           borderColor="gray.300"
@@ -29,10 +28,10 @@ export default function FileUpload({ handleChange }) {
           _hover={{
             shadow: "md"
           }}
-          // as={motion.div}
+          
           initial="rest"
           animate="rest"
-          // whileHover="hover"
+          
         >
           <Box position="relative" height="100%" width="100%">
             <Box
@@ -60,6 +59,7 @@ export default function FileUpload({ handleChange }) {
                   </Flex>
               </Stack>
             </Box>
+            {/* Input oculto para cargar archivos */}
             <Input
               type="file"
               height="100%"
@@ -71,8 +71,7 @@ export default function FileUpload({ handleChange }) {
               aria-hidden="true"
               accept="image/*"
               onChange={handleChange}
-              // onDragEnter={startAnimation}
-              // onDragLeave={stopAnimation}
+              
             />
           </Box>
         </Box>
